@@ -12,6 +12,21 @@ plugins {
 	id 'com.vaadin' version "$vaadinVersion"
 }
 
+group = 'co.ptm'
+version = '0.0.0'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 repositories {
 	mavenCentral()
 	maven { setUrl("https://maven.vaadin.com/vaadin-prereleases") }
@@ -26,6 +41,10 @@ dependencies {
 	implementation 'org.parttio:line-awesome:1.1.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	compileOnly 'org.projectlombok:lombok'
+
+	annotationProcessor 'org.projectlombok:lombok'
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
